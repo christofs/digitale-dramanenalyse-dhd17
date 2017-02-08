@@ -61,16 +61,10 @@ document.getElementsByTagName( 'head' )[0].appendChild( link );
 ## 1. Topic Modeling
 
 --
-### Topic Model: Ergebnis
+### Topic Model
 <a href="img/blei_topic-modeling_result.png"><img src="img/blei_topic-modeling_result.png" height="500"></img></a>
 <br/>
 <small>Dokumente; Topic-Verteilungen; Wort-Verteilungen</small>
-
---
-### Topic Model: Ausgangspunkt
-<a href="img/blei_topic-modeling_observed.png"><img src="img/blei_topic-modeling_observed.png" height="500"></img></a>
-<br/>
-<small>Dokumente; viele Unbekannte</small>
 
 
 ---
@@ -79,10 +73,11 @@ document.getElementsByTagName( 'head' )[0].appendChild( link );
 --
 ### Typen von Topics
 <br/>
-* argumentativ: abstrakte Themen
-* narrativ: Erzählmotive
-* deskriptiv: Figurenbeschreibung, Raumbeschreibung
-* diskursiv: Register, Sprache, Rhetorik
+* argumentativ: abstrakte, erkennbare Themen
+* narrativ: Erzählmotive (zeitlich)
+* deskriptiv: Figuren/Objektbeschreibung, Raumbeschreibung
+* diskursiv: Register, Sprache, Rhetorik, Dialog
+
 
 --
 ### Beispiel: argumentativ
@@ -110,12 +105,47 @@ document.getElementsByTagName( 'head' )[0].appendChild( link );
 ---
 ## 3. Topics und Untergattungen
 
+
+--
+### Textsammlung
+<br/>
+* 391 französische Theaterstücke, 1630-1789
+* 181 Tragödien, 150 Komödien, 52 Tragikomödien
+* aus der Sammlung "Théâtre classique", ed. Paul Fièvre
+
+
+--
+### Verschiedene Modelle
+<br/>
+* Anzahl der Topics: 50, 60, 70, 80, 90, 100
+* Optimierungsintervall für die Hyperparameter: <br/>50, 100, 300, 500, 1000, 2000, 3000, 6000
+* insgesamt 48 Modelle
+* Auswahl des besten Modells: Klassifikationstask
+
+
+--
+### Evaluierung der Modelle (Auswahl)
+<a href="img/classify-performance_topics_subgenre.svg"><img src="img/classify-performance_topics_subgenre.svg" height="500"></img></a>
+<br/>
+<small>Bestes Modell: 60 Topics, Optimierungsintervall 300 <br/>(10-fache Kreuzvalidierung; Classifier: SVM, SGD, KNN, Decision Trees)</small>
+
 --
 ### PCA mit Topic-Daten (60 Topics)
-<a href="img/forgif-3dscatter_124-221.png"><img src="img/forgif-3dscatter_124-221.png" height="500"></img></a>
+<a href="img/scatterplot-pc1-pc2.png"><img src="img/scatterplot-pc1-pc2.png" height="500"></img></a>
 <br/>
-<small><font color="darkblue">Tragödien (blau)</font> - <font color="darkgreen">Tragikomödien (grün)</font> - <font color="darkred">Komödien (rot)</font></small>
+<small><font color="darkblue"><font color="darkred">Komödien (rot)</font> - <font color="darkgreen">Tragikomödien (grün)</font> - Tragödien (blau)</font> </small>
 
+--
+### Verteilungen in PC1
+<a href="img/boxplots-pc1.png"><img src="img/boxplots-pc1.png" height="500"></img></a>
+<br/>
+<small><font color="darkblue"><font color="darkred">Komödien (rot)</font> - <font color="darkgreen">Tragikomödien (grün)</font> - Tragödien (blau)</font><br/>Alle drei Verteilungen sind hoch signifikant unterschiedlich</small>
+
+--
+### Verteilungen in PC2
+<a href="img/boxplots-pc2.png"><img src="img/boxplots-pc2.png" height="500"></img></a>
+<br/>
+<small><font color="darkblue"><font color="darkred">Komödien (rot)</font> - <font color="darkgreen">Tragikomödien (grün)</font> - Tragödien (blau)</font><br/>Tragikomödie signifikant unterschiedlich zu Komödie und Tragödie</small>
 
 ---
 ## Fazit
